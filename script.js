@@ -25,6 +25,53 @@ function displayWeather(data) {
 }
 
 getWeather();
+
+function displayWeather(data) {
+  const weatherDataDiv = document.getElementById("weather-data");
+  const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+  const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+  const weatherDescription = data.weather[0].description;
+
+  weatherDataDiv.innerHTML = `
+        <p>Location: ${data.name}</p>
+        <p>Temperature: ${data.main.temp}°C</p>
+        <p>Weather: ${weatherDescription}</p>
+        <p>Sunrise: ${sunrise}</p>
+        <p>Sunset: ${sunset}</p>
+    `;
+
+  changeTheme(weatherDescription);
+}
+
+function changeTheme(description) {
+  const body = document.body;
+  const header = document.querySelector("header");
+  const sections = document.querySelectorAll("section");
+
+  if (description.includes("sunny") || description.includes("clear")) {
+    body.style.backgroundColor = "#ffeb3b";
+    body.style.color = "#333";
+    header.style.backgroundColor = "#ffc107";
+  } else if (description.includes("cloud")) {
+    body.style.backgroundColor = "#90a4ae";
+    body.style.color = "#fff";
+    header.style.backgroundColor = "#607d8b";
+  } else if (description.includes("rain") || description.includes("drizzle")) {
+    body.style.backgroundColor = "#4fc3f7";
+    body.style.color = "#fff";
+    header.style.backgroundColor = "#03a9f4";
+  } else {
+    body.style.backgroundColor = "#bdbdbd";
+    body.style.color = "#fff";
+    header.style.backgroundColor = "#757575";
+  }
+
+  sections.forEach((section) => {
+    section.style.backgroundColor = body.style.backgroundColor;
+    section.style.color = body.style.color;
+  });
+}
+
 const spotifyClientId = "0933722a01c94041a5197d5a9ce5bf0d"; // Replace with your Spotify Client ID
 const spotifyClientSecret = "900e9ae7f50747f4a51aa77b13027574"; // Replace with your Spotify Client Secret
 const spotifyTokenUrl = "https://accounts.spotify.com/api/token";
@@ -117,3 +164,25 @@ function displayAffirmation() {
 }
 
 displayAffirmation();
+document
+  .getElementById("share-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const location = document.getElementById("location").value;
+    const experience = document.getElementById("experience").value;
+    const photoUrl = document.getElementById("photo-url").value;
+
+    const sharedExperiencesDiv = document.getElementById("shared-experiences");
+    const experienceElement = document.createElement("div");
+    experienceElement.className = "shared-experience";
+    experienceElement.innerHTML = `
+        <h3>${name} from ${location}</h3>
+        <p>${experience}</p>
+        <img src="${photoUrl}" alt="Sunny Day Photo" style="max-width: 100%;">
+    `;
+    sharedExperiencesDiv.appendChild(experienceElement);
+
+    document.getElementById("share-form").reset();
+  });
