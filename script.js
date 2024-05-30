@@ -70,3 +70,26 @@ function displayPlaylists(playlists) {
 }
 
 getPlaylists();
+const activities = [
+  "Go for a walk in the park",
+  "Have a picnic",
+  "Read a book outside",
+  "Do some gardening",
+  "Ride a bike",
+  "Practice yoga outdoors",
+  "Take photos of nature",
+  "Go for a hike",
+  "Play a sport",
+  "Have a barbecue",
+];
+
+function displayActivities() {
+  const activitiesList = document.getElementById("activities-list");
+  activities.forEach((activity) => {
+    const activityElement = document.createElement("div");
+    activityElement.textContent = activity;
+    activitiesList.appendChild(activityElement);
+  });
+}
+
+displayActivities();
