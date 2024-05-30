@@ -13,10 +13,14 @@ async function getWeather() {
 
 function displayWeather(data) {
   const weatherDataDiv = document.getElementById("weather-data");
+  const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+  const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
   weatherDataDiv.innerHTML = `
         <p>Location: ${data.name}</p>
         <p>Temperature: ${data.main.temp}°C</p>
         <p>Weather: ${data.weather[0].description}</p>
+        <p>Sunrise: ${sunrise}</p>
+        <p>Sunset: ${sunset}</p>
     `;
 }
 
@@ -93,3 +97,23 @@ function displayActivities() {
 }
 
 displayActivities();
+const affirmations = [
+  "You are capable of amazing things.",
+  "Believe in yourself and all that you are.",
+  "Every day is a second chance.",
+  "You are stronger than you think.",
+  "Positive mind. Positive vibes. Positive life.",
+  "You are enough just as you are.",
+  "Start each day with a grateful heart.",
+  "You are doing great.",
+  "Believe in the power of yet.",
+  "You are your only limit.",
+];
+
+function displayAffirmation() {
+  const affirmationText = document.getElementById("affirmation-text");
+  const randomIndex = Math.floor(Math.random() * affirmations.length);
+  affirmationText.textContent = affirmations[randomIndex];
+}
+
+displayAffirmation();
