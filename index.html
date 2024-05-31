@@ -8,19 +8,40 @@
   </head>
   <body>
     <header>
-      <h1>Sunny Vibes</h1>
+      <h1>🌞Sunny Vibes</h1>
     </header>
     <main>
       <section>
-        <h2>Weather Forecast</h2>
-        <h1>Paris</h1>
-        <div>
-          <p>
-            Tuesday, moderate rain <br />
-            Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
-          </p>
+        <div class="weather-app">
+          <h2 class="forecast">Weather Forecast</h2>
+          <header>
+            <form>
+              <input
+                type="search"
+                placeholder="Enter a city..."
+                required
+                class="search-form-input"
+              />
+              <input type="submit" value="Search" class="search-form-submit" />
+            </form>
+          </header>
+          <div class="weather-forecast-container">
+            <div>
+              <h3 class="weather-city">Paris</h3>
+              <p class="weather-details">
+                Tuesday,<br />
+                Moderate Rain <br />
+                Humidity: <strong>87%</strong>,<br />
+                Wind: <strong>7.2km/h</strong>
+              </p>
+            </div>
+            <div class="weather-temprature-container">
+              <div class="weather-icon">🌦️</div>
+              <div class="weather-temprature">13</div>
+              <div class="weather-unit">°C</div>
+            </div>
+          </div>
         </div>
-        <div>🌦️ 13°C</div>
       </section>
       <section>
         <h2>Playlist</h2>
