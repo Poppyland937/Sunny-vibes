@@ -38,3 +38,37 @@ h2 {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+#community {
+    margin-top: 20px;
+}
+
+#share-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#share-form input, #share-form textarea, #share-form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#share-form button {
+    background-color: #ffdd57;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#shared-experiences {
+    margin-top: 20px;
+}
+
+.shared-experience {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
